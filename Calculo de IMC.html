@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculadoraIMC</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        div#face{
+            background-color: white;
+            width: 400px;
+            height: 300px;
+            margin: 200px auto;
+            text-align: center;
+            padding: 30px;
+        }
+        button{
+            transition-duration: 1s;
+            border: none;
+            color: black;
+            padding: 10px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 0px 2px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgb(74, 129, 225);
+            color: aliceblue;
+        }
+        form{
+            width: 180px;
+            margin: 30px auto;
+        }
+    </style>
+    <div id="face">
+        <header id="cabeca">
+            <hgroup>
+                <h1 style="text-align: center;">Calculadora IMC</h1>
+            </hgroup>
+        </header>
+        <form>
+            <label for="nome">Insira o nome:</label>
+                <input id="nome" type="text">
+            <label for="peso">Insira o peso:</label>
+                <input id="peso" type="text">
+            <label for="altura">Insira a altura:</label>
+                <input id="altura" type="text">
+        </form>
+            <button id="calc">Analisar IMC</button>
+        <script>
+            document.getElementById('calc').addEventListener('click',calcimc)
+
+                function validate(p, a, cimc) {
+
+                    if (p==''|a==''){
+                        alert('Preenchar todas as lacunas corretamento')
+                    } else if (p<0 | a<0){
+                        alert('O valor inserido esta Invalido. Insira numero exatos.')
+                    }
+                    else {
+                        cimc()
+                    }
+                }
+                function calcimc() {
+                    let p = Number(document.getElementById('peso').value);
+                    let a = Number(document.getElementById('altura').value);
+                    
+                        validate(p, a, cimc)
+                    
+                    function cimc() {
+                        let imc = p/ (Math.pow(a, 2))
+                            alert(`Valor do seu IMC: ${imc.toFixed(2)}`)
+                        if (imc < 20) {
+                            alert('Voce esta Magro')
+                        } else if (imc>= 20 && imc<= 25) {
+                            alert('Você esta na media')
+                        } else if (imc> 25 && imc< 30) {
+                            alert('Você esta no Sobrepeso')
+                        } else if (imc>= 30 && imc<= 35) {
+                            alert ('Você esta acima do Peso')
+                        } else if (imc> 35 && imc< 40) {
+                            alert ('Você esta acima do Peso')
+                        } else if (imc> 40) {
+                            alert('Você esta acima do Peso')
+                        }
+                    }
+                }
+        </script>
+    </div>
+</body>
+</html>
